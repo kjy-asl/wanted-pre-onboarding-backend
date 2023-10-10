@@ -3,13 +3,13 @@ package com.example.preonboarding.controller;
 
 import com.example.preonboarding.common.ApiResponse;
 import com.example.preonboarding.common.Message.ResponseMessage;
+import com.example.preonboarding.dto.RecruitmentNoticeRegistRequestDTO;
 import com.example.preonboarding.service.RecruitmentNoticeService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.val;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -23,4 +23,12 @@ public class RecruitmentNoticeController {
         return ResponseEntity.ok(ApiResponse.success(ResponseMessage.SUCCESS_GET_NOTICES.getMessage(), response));
     }
 
+    @PostMapping("/regist")
+    public ResponseEntity<ApiResponse> registNotice(
+            Long companyId,
+            @Valid @RequestBody RecruitmentNoticeRegistRequestDTO request)
+    {
+        recruitmentNoticeService.registNotice(companyId, request);
+        return ResponseEntity.ok(ApiResponse.success(ResponseMessage.SUCCESS_REGIST_NOTICE.getMessage()));
+    }
 }

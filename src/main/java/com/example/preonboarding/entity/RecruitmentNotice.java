@@ -36,7 +36,7 @@ public class RecruitmentNotice extends TimeStamped {
     private String recruitPosition;
 
     @Column(name = "recruitment_compensation")
-    private Long recruitmentCompensation;
+    private Long;
 
     @Column(name = "stacks")
     private String stacks;

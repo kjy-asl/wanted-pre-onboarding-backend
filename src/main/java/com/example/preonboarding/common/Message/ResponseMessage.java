@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 @Getter
 @RequiredArgsConstructor
 public enum ResponseMessage {
+    SUCCESS_REGIST_NOTICE("채용 공고 등록을 성공하였습니다."),
     SUCCESS_GET_NOTICES("채용 공고 목록 조회를 성공하였습니다.");
 
     private final String message;
