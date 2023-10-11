@@ -19,8 +19,17 @@ public class Company extends TimeStamped {
     @Column(name = "name")
     private String name;
 
+    @Column(name = "country")
+    private String country;
+
+    @Column(name = "region")
+    private String region;
+
     @Builder
-    public Company(String name){
+    public Company(String name, String country, String region){
+
         this.name = name;
+        this.country = country;
+        this.region = region;
     }
 }

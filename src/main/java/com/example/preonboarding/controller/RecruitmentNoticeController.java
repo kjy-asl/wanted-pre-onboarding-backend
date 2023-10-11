@@ -4,6 +4,7 @@ package com.example.preonboarding.controller;
 import com.example.preonboarding.common.ApiResponse;
 import com.example.preonboarding.common.Message.ResponseMessage;
 import com.example.preonboarding.dto.RecruitmentNoticeRegistRequestDTO;
+import com.example.preonboarding.dto.RecruitmentNoticeUpdateRequestDTO;
 import com.example.preonboarding.service.RecruitmentNoticeService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -29,6 +30,15 @@ public class RecruitmentNoticeController {
             @Valid @RequestBody RecruitmentNoticeRegistRequestDTO request)
     {
         recruitmentNoticeService.registNotice(companyId, request);
+        return ResponseEntity.ok(ApiResponse.success(ResponseMessage.SUCCESS_REGIST_NOTICE.getMessage()));
+    }
+
+    @PatchMapping("/update")
+    public ResponseEntity<ApiResponse> updateNotice(
+            Long companyId,
+            @Valid @RequestBody RecruitmentNoticeUpdateRequestDTO request)
+    {
+        recruitmentNoticeService.updateNotice(companyId, request);
         return ResponseEntity.ok(ApiResponse.success(ResponseMessage.SUCCESS_REGIST_NOTICE.getMessage()));
     }
 }

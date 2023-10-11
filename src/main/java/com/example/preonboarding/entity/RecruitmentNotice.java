@@ -17,26 +17,14 @@ public class RecruitmentNotice extends TimeStamped {
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "company")
+    @JoinColumn(name = "company_id")
     private Company company;
-
-    @Column(name = "title")
-    private String title;
-
-    @Column(name = "company_name")
-    private String companyName;
-
-    @Column(name = "country")
-    private String country;
-
-    @Column(name = "region")
-    private String region;
 
     @Column(name = "recruit_position")
     private String recruitPosition;
 
     @Column(name = "recruitment_compensation")
-    private Long;
+    private Long recruitmentCompensation;
 
     @Column(name = "stacks")
     private String stacks;
@@ -46,19 +34,13 @@ public class RecruitmentNotice extends TimeStamped {
 
     @Builder
     public RecruitmentNotice(
-            String title,
-            String companyName,
-            String country,
-            String region,
+            Company company,
             String recruitPosition,
             Long recruitmentCompensation,
             String stacks,
             String content)
     {
-        this.title = title;
-        this.companyName = companyName;
-        this.country = country;
-        this.region = region;
+        this.company = company;
         this.recruitPosition = recruitPosition;
         this.recruitmentCompensation = recruitmentCompensation;
         this.stacks = stacks;
