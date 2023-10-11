@@ -1,5 +1,6 @@
 package com.example.preonboarding.service;
 
+import com.example.preonboarding.dto.RecruitmentNoticeDeleteRequestDTO;
 import com.example.preonboarding.dto.RecruitmentNoticeRegistRequestDTO;
 import com.example.preonboarding.dto.RecruitmentNoticeResponseDTO;
 import com.example.preonboarding.dto.RecruitmentNoticeUpdateRequestDTO;
@@ -39,12 +40,22 @@ public class RecruitmentNoticeServiceImpl implements RecruitmentNoticeService{
 
     @Override
     @Transactional
-    public void updateNotice(Long companyId, RecruitmentNoticeUpdateRequestDTO request){
+    public void updateNotice(Long companyId, RecruitmentNoticeUpdateRequestDTO request) {
         val notice = recruitmentNoticeRepository.findById(request.noticeId())
                 .orElseThrow();
         notice.setRecruitPosition(request.recruitmentPosition());
         notice.setRecruitmentCompensation(request.recruitmentCompensation());
         notice.setContent(request.content());
         notice.setStacks(request.stacks());
+    }
+
+    @Override
+    @Transactional
+    public void deleteNotice(Long companyId, RecruitmentNoticeDeleteRequestDTO request){
+        val notice = recruitmentNoticeRepository.findById(request.noticeId())
+                .orElseThrow();
+        val company = companyRepository.findById(companyId);
+
+        recruitmentNoticeRepository.delete(notice);
     }
 }

@@ -3,6 +3,7 @@ package com.example.preonboarding.controller;
 
 import com.example.preonboarding.common.ApiResponse;
 import com.example.preonboarding.common.Message.ResponseMessage;
+import com.example.preonboarding.dto.RecruitmentNoticeDeleteRequestDTO;
 import com.example.preonboarding.dto.RecruitmentNoticeRegistRequestDTO;
 import com.example.preonboarding.dto.RecruitmentNoticeUpdateRequestDTO;
 import com.example.preonboarding.service.RecruitmentNoticeService;
@@ -39,6 +40,16 @@ public class RecruitmentNoticeController {
             @Valid @RequestBody RecruitmentNoticeUpdateRequestDTO request)
     {
         recruitmentNoticeService.updateNotice(companyId, request);
-        return ResponseEntity.ok(ApiResponse.success(ResponseMessage.SUCCESS_REGIST_NOTICE.getMessage()));
+        return ResponseEntity.ok(ApiResponse.success(ResponseMessage.SUCCESS_UPDATE_NOTICE.getMessage()));
+    }
+
+    @DeleteMapping("/delete")
+    public ResponseEntity<ApiResponse> deleteNotice(
+            Long companyId,
+            @Valid @RequestBody RecruitmentNoticeDeleteRequestDTO request)
+    {
+        recruitmentNoticeService.deleteNotice(companyId, request);
+        return ResponseEntity.ok(ApiResponse.success(ResponseMessage.SUCCESS_DELETE_NOTICE.getMessage()));
+
     }
 }
