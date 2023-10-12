@@ -1,9 +1,9 @@
 package com.example.preonboarding.service;
 
-import com.example.preonboarding.dto.RecruitmentNoticeDeleteRequestDTO;
-import com.example.preonboarding.dto.RecruitmentNoticeRegistRequestDTO;
-import com.example.preonboarding.dto.RecruitmentNoticeResponseDTO;
-import com.example.preonboarding.dto.RecruitmentNoticeUpdateRequestDTO;
+import com.example.preonboarding.dto.request.RecruitmentNoticeDeleteRequestDTO;
+import com.example.preonboarding.dto.request.RecruitmentNoticeRegistRequestDTO;
+import com.example.preonboarding.dto.response.RecruitmentNoticeResponseDTO;
+import com.example.preonboarding.dto.request.RecruitmentNoticeUpdateRequestDTO;
 import com.example.preonboarding.entity.RecruitmentNotice;
 import com.example.preonboarding.repository.CompanyRepository;
 import com.example.preonboarding.repository.RecruitmentNoticeRepository;

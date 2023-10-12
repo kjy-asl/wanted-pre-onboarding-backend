@@ -1,4 +1,4 @@
-package com.example.preonboarding.dto;
+package com.example.preonboarding.dto.request;
 
 import jakarta.validation.constraints.NotNull;
 

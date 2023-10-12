@@ -3,9 +3,10 @@ package com.example.preonboarding.controller;
 
 import com.example.preonboarding.common.ApiResponse;
 import com.example.preonboarding.common.Message.ResponseMessage;
-import com.example.preonboarding.dto.RecruitmentNoticeDeleteRequestDTO;
-import com.example.preonboarding.dto.RecruitmentNoticeRegistRequestDTO;
-import com.example.preonboarding.dto.RecruitmentNoticeUpdateRequestDTO;
+import com.example.preonboarding.dto.request.RecruitmentNoticeDeleteRequestDTO;
+import com.example.preonboarding.dto.request.RecruitmentNoticeDetailRequestDTO;
+import com.example.preonboarding.dto.request.RecruitmentNoticeRegistRequestDTO;
+import com.example.preonboarding.dto.request.RecruitmentNoticeUpdateRequestDTO;
 import com.example.preonboarding.service.RecruitmentNoticeService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -50,6 +51,15 @@ public class RecruitmentNoticeController {
     {
         recruitmentNoticeService.deleteNotice(companyId, request);
         return ResponseEntity.ok(ApiResponse.success(ResponseMessage.SUCCESS_DELETE_NOTICE.getMessage()));
-
     }
+
+    @GetMapping("/detail")
+    public ResponseEntity<ApiResponse> detailNotice(
+            Long companyId,
+            @Valid @RequestBody RecruitmentNoticeDetailRequestDTO request)
+    {
+        val response = recruitmentNoticeService.detailNotice(companyId, request);
+        return ResponseEntity.ok(ApiResponse.success(ResponseMessage.SUCCESS_DETAIL_MESSAGE.getMessage()));
+    }
+    )
 }

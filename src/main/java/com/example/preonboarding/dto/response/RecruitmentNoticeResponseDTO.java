@@ -1,4 +1,4 @@
-package com.example.preonboarding.dto;
+package com.example.preonboarding.dto.response;
 
 import com.example.preonboarding.entity.RecruitmentNotice;
 import lombok.Builder;
